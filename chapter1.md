@@ -1,5 +1,3 @@
-
-
 * # 大数据基本理论
 
 ## 大数据的技术特点
@@ -85,9 +83,9 @@
 
 大数据计算模式，是指根据大数据的不同数据特征和计算特征，从多样性的大数据计算问题和需求中提炼并建立的各种高层抽象（Ａbstraction\)和模型（Model\)。传统的并行计算方法主要从体系结构和编程语言的层面定义了一些较为底层的抽象和模型。但由于大数据处理问题具有很多高层的数据特征和计算特征，因此大数据处理需要更多地结合其数据特征和计算特性考虑更为更为高层的计算模式。
 
-![bigdatasystool](images/bigdatasystool.png)
+![](/assets/bigdatasystool.png)
 
-![bigdatasystemwide](images/bigdatasystemwide.png)
+![](/assets/bigdatasystemwide.png)
 
 ## 大数据计算框架底层需要自动完成的处理：
 
@@ -105,11 +103,11 @@
 
 ## Hadoop分布式存储与并行计算框架
 
-![Hadoop分布式存储与并行计算框架](images/Hadoop分布式存储与并行计算框架.png)
+![](/assets/Hadoop分布式存储与并行计算框架.png)
 
 ## Hadoop平台基本组成与生态系统
 
-![Hadoop平台的基本组成与生态系统](images/Hadoop平台的基本组成与生态系统.png)
+![](/assets/Hadoop平台的基本组成与生态系统.png)
 
 ## 搭建hadoop集群环境
 
