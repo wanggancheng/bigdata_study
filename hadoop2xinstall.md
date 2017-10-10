@@ -348,3 +348,5 @@ bin/hdfs dfsadmin -report
 | ResourceManager | [http://resourcemanager\_host:port/](http://resourcemanager_host:port/) | 8088 |
 | MapReduce JobHistory Server | [http://jobhistoryserver\_host:port/](http://jobhistoryserver_host:port/) | 19888 |
 
+
+
