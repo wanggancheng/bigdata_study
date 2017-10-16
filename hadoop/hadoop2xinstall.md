@@ -228,15 +228,9 @@ cp mapred-site.xml.template  mapred-site.xml
 
 7\)配置文件7:yarn-site.xml
 
-```sh
-sudo mkdir -p /data/hadoop/yarn/local
-sudo mkdir -p /data/tmp/logs
-sudo chown -R bigdata:bigdata /data/hadoop/yarn/local
-sudo chown -R bigdata:bigdata /data/tmp
-```
+
 
 ```xml
-<?xml version="1.0"?>
 <configuration>
   <property>
     <description>The hostname of the RM.</description>
