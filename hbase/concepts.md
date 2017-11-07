@@ -19,7 +19,15 @@
 
 ## RowKey设计
 
+RowK ey设计是最重要的事情，应该基于预期的访问模式来为RowKey建模。Rowkey决定了访问HBase表时可以得到的性能。原因有两个：Region基于RowKey为一个区间的行提供服务，并且负责区间的每一行；HFile在硬盘上存储有序的行。RowKey的有序特性和底层存储格式可以保证HBase表在设计RowKey之后的良好性能。
 
+1. RowKey是以字典顺序从大到小排序
+
+原生HBase只支持从小到大的排序，但是现在有个需求想展现影片热度排行榜。这就要实现从大到小排列。针对这情况可以采用RowKey=Integer.MAX\_VALUE-Rowkey的方式将Rowkey进行转换。
+
+  2.RowKey尽量散列RowKey设计
+
+ 要保证散列，这样就会保证所有的数据都不是在一个Region上，从而避免读写的时候负载会集中在个别Region上。
 
 
 
