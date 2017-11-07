@@ -42,5 +42,9 @@ RowK ey设计是最重要的事情，应该基于预期的访问模式来为RowK
 
 数据块缓存（IN\_MEMORY\)
 
+布隆过滤器
 
+数据压缩
+
+压缩编码：LZO,SNAPPY,GZIP
 
