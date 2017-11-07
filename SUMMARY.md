@@ -6,10 +6,6 @@
   * [Hadoop2X集群安装](hadoop/hadoop2xinstall.md)
   * [Intellij运行提交WordCount任务](hadoop/intellij_wordcount.md)
   * [Hadoop2参数设置](hadoop/hadoopparamsetting.md)
-* HBase相关
-  * 概念性认识
-
-
-
-
+* [HBase相关](hbase/README.md)
+  * [概念性认识](hbase/concepts.md)
 
