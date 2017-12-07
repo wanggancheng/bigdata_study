@@ -103,8 +103,8 @@ Caused by: java.lang.IllegalArgumentException: Password cannot be set empty
 
 重新分析日志，找到一个分析线索：
 
-```java
-Overriding bean definition for bean 'encryptorBean' with a different definition: replacing [Root bean: class [demo.DemoApplication]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in demo.DemoApplication] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorConfiguration; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/ulisesbocchio/jasyptspringboot/configuration/StringEncryptorConfiguration.class]]
+```text
+Overriding bean definition for bean 'encryptorBean' with a different definition: replacing [Root bean: class [demo.DemoApplication]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in demo.DemoApplication] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorConfiguration; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/ulisesbocchio/jasyptspringboot/configuration/StringEncryptorConfiguration.class]
 Registering new name 'encryptorBean' for Bean definition with placeholder name: ${jasypt.encryptor.bean:jasyptStringEncryptor}
 String Encryptor custom Bean not found with name 'encryptorBean'. Initializing String Encryptor based on properties with name 'encryptorBean'
 ```
