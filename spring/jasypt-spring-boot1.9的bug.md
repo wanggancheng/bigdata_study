@@ -99,5 +99,80 @@ Caused by: java.lang.IllegalArgumentException: Password cannot be set empty
 
 其中要求Environment提供一个“jasypt.encryptor.password"的属性值，也就是运行异常提到的password。这说明自定义的StringEncryptor未发挥作用。
 
+重新分析日志，找到一个分析线索：
+
+```java
+Overriding bean definition for bean 'encryptorBean' with a different definition: replacing [Root bean: class [demo.DemoApplication]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in demo.DemoApplication] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.ulisesbocchio.jasyptspringboot.configuration.StringEncryptorConfiguration; factoryMethodName=stringEncryptor; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/ulisesbocchio/jasyptspringboot/configuration/StringEncryptorConfiguration.class]]
+Registering new name 'encryptorBean' for Bean definition with placeholder name: ${jasypt.encryptor.bean:jasyptStringEncryptor}
+String Encryptor custom Bean not found with name 'encryptorBean'. Initializing String Encryptor based on properties with name 'encryptorBean'
+```
+
+       从日志可以看出，名为"encryptorBean"的bean definition被替换过，可能是被前面提到的替换过。
+
+只好重新学习源码。
+
+找到了定义的地方并且与一个BeanFactoryProcessor相关。
+
+```java
+ @Conditional(OnMissingEncryptorBean.class)
+    @Bean
+    public static BeanNamePlaceholderRegistryPostProcessor beanNamePlaceholderRegistryPostProcessor(Environment environment) {
+        return new BeanNamePlaceholderRegistryPostProcessor(environment);
+    }
+
+    @Conditional(OnMissingEncryptorBean.class)
+    @Bean(name = ENCRYPTOR_BEAN_PLACEHOLDER)
+    public StringEncryptor stringEncryptor(Environment environment) {
+        String encryptorBeanName = environment.resolveRequiredPlaceholders(ENCRYPTOR_BEAN_PLACEHOLDER);
+        LOG.info("String Encryptor custom Bean not found with name '{}'. Initializing String Encryptor based on properties with name '{}'",
+                 encryptorBeanName, encryptorBeanName);
+        return new LazyStringEncryptor(DEFAULT_LAZY_ENCRYPTOR_FACTORY, environment);
+    }
+```
+
+这两个Bean生效与OnMissingEncryptorBean相关。
+
+```java
+ /**
+     * Condition that checks whether the StringEncryptor specified by placeholder: {@link #ENCRYPTOR_BEAN_PLACEHOLDER} exists.
+     * ConditionalOnMissingBean does not support placeholder resolution.
+     */
+    private static class OnMissingEncryptorBean implements ConfigurationCondition {
+
+        @Override
+        public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+            return !context.getBeanFactory().containsBean(context.getEnvironment().resolveRequiredPlaceholders(ENCRYPTOR_BEAN_PLACEHOLDER));
+        }
+
+        @Override
+        public ConfigurationPhase getConfigurationPhase() {
+            return ConfigurationPhase.REGISTER_BEAN;
+        }
+    }
+```
+
+经过断点调试分析，match方法永远返回true。BeanNamePlaceholderRegistryPostProcessor的主要处理如下：
+
+```java
+ @Override
+        public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+            DefaultListableBeanFactory bf = (DefaultListableBeanFactory) registry;
+            Stream.of(bf.getBeanDefinitionNames())
+                //Look for beans with placeholders name format: '${placeholder}' or '${placeholder:defaultValue}'
+                .filter(name -> name.matches("\\$\\{[\\w\\.-]+(?>:[\\w\\.-]+)?\\}"))
+                .forEach(placeholder -> {
+                    String actualName = environment.resolveRequiredPlaceholders(placeholder);
+                    BeanDefinition bd = bf.getBeanDefinition(placeholder);
+                    bf.removeBeanDefinition(placeholder);
+                    bf.registerBeanDefinition(actualName, bd);
+                    LOG.debug("Registering new name '{}' for Bean definition with placeholder name: {}", actualName, placeholder);
+                });
+        }
+```
+
+就是在postProcessBeanDefinitionRegistry中把名为”encryptorBen"的自定义beanDefinition替换掉了。
+
+
+
 
 
