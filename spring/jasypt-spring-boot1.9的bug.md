@@ -176,7 +176,43 @@ String Encryptor custom Bean not found with name 'encryptorBean'. Initializing S
 
 就是在postProcessBeanDefinitionRegistry中把名为”encryptorBen"的自定义beanDefinition替换掉了。
 
+## 2.常规的解决办法
 
+修改BeanNamePlaceholderRegistryPostProcessor的postProcessBeanDefinitionRegistry方法。在注册前判断actualName对应的BeanDefinition是否存在。不存在才register。
 
+### 3.项目作者的解决办法
 
+不得不佩服项目作者。他的解决办法更合理：BeanNamePlaceholderRegistryPostProcessor的处理时机时机不合适。所有作者废弃的把默认StringEncryptor的bean为占位符并通过BeanNamePlaceholderRegistryPostProcessor处理实际beanName的做法。
+
+```java
+@Bean(name = ENCRYPTOR_BEAN_NAME)
+    public StringEncryptor stringEncryptor(@SuppressWarnings("SpringJavaAutowiringInspection") EnvCopy envCopy, BeanFactory bf) {
+        String customEncryptorBeanName = envCopy.get().resolveRequiredPlaceholders(ENCRYPTOR_BEAN_PLACEHOLDER);
+        return new DefaultLazyEncryptor(envCopy.get(), customEncryptorBeanName, bf);
+    }
+
+    @Bean(name = DETECTOR_BEAN_NAME)
+    public EncryptablePropertyDetector encryptablePropertyDetector(@SuppressWarnings("SpringJavaAutowiringInspection") EnvCopy envCopy, BeanFactory bf) {
+        String prefix = envCopy.get().resolveRequiredPlaceholders("${jasypt.encryptor.property.prefix:ENC(}");
+        String suffix = envCopy.get().resolveRequiredPlaceholders("${jasypt.encryptor.property.suffix:)}");
+        String customDetectorBeanName = envCopy.get().resolveRequiredPlaceholders(DETECTOR_BEAN_PLACEHOLDER);
+        return new DefaultLazyPropertyDetector(prefix, suffix, customDetectorBeanName, bf);
+    }
+
+    @Bean(name = RESOLVER_BEAN_NAME)
+    public EncryptablePropertyResolver encryptablePropertyResolver(@Qualifier(DETECTOR_BEAN_NAME) EncryptablePropertyDetector propertyDetector, @Qualifier(ENCRYPTOR_BEAN_NAME) StringEncryptor encryptor,  BeanFactory bf, @SuppressWarnings("SpringJavaAutowiringInspection") EnvCopy envCopy) {
+        String customResolverBeanName = envCopy.get().resolveRequiredPlaceholders(RESOLVER_BEAN_PLACEHOLDER);
+        return new DefaultLazyPropertyResolver(propertyDetector, encryptor, customResolverBeanName, bf);
+    }
+```
+
+（1）已经报StringEncryptor等BeanName都是固定以"Lazy"开头的固定名称。
+
+（2）新版本的代码分工更清晰。已经拆分为解析、检查、加密/解密等Bean了。
+
+（3）解决所提bug的修改在与DefaultLazyEncryptor、DefaultLazyPropertyDetector、DefaultLazyPropertyResolver等实现方式。
+
+![](/assets/DefaultLazyStringEncryptor.png)从上图可以看出作者采用了java8的Stream处理方式懒执行的方式，在实际调用才判断使用自定义的还是默认的实现。
+
+这才是从根本解决问题的正确方式呀。
 
