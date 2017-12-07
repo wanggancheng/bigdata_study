@@ -1,5 +1,7 @@
 # 从jasypt-spring-boot1.9版本中一个bug及新版本变化得到的收获
 
+## 1.bug的发现及分析过程
+
 在使用jaspt-spring-boot-demo的DemoApplication中，无意发现jasypt-spring-boot的1.9版本的一个bug。
 
 在DemoApplication中，自定义了一个StringEncryptor。代码如下：
@@ -107,7 +109,9 @@ Registering new name 'encryptorBean' for Bean definition with placeholder name: 
 String Encryptor custom Bean not found with name 'encryptorBean'. Initializing String Encryptor based on properties with name 'encryptorBean'
 ```
 
-       从日志可以看出，名为"encryptorBean"的bean definition被替换过，可能是被前面提到的替换过。
+```
+   从日志可以看出，名为"encryptorBean"的bean definition被替换过，可能是被前面提到的替换过。
+```
 
 只好重新学习源码。
 
