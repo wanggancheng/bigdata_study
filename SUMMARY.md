@@ -10,7 +10,5 @@
 * [HBase相关](hbase/README.md)
   * [概念性认识](hbase/concepts.md)
 * Spring相关
-  * jasypt-spring-boot1.9版本的一个bug与新版本的变化
-
-
+  * [jasypt-spring-boot1.9版本的一个bug与新版本的变化](spring/jasypt-spring-boot1.9的bug.md)
 
