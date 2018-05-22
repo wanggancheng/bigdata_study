@@ -12,6 +12,7 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 消费者少于和等于partition的数量时，会出现多个partition对应一个消费者的情况，个别消费者消费量会比其他的多。
 
 
+启用configuration properties的配置类为：BindingServiceConfiguration.java
 ##bindings通用参数
 * spring.cloud.stream.bindings.<channelName>.destination:目标
 * sprinig.cloud.stream.bindings.<channelName>.group:分组名
