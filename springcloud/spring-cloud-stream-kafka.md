@@ -19,7 +19,8 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 ##Kafka extend binding参数(KafkaExtendedBindingProperties.java)
 配置的前缀：spring.cloud.stream.kafka
 Kafka相关Configuration类在：META-INF/spring.binders中指定
-
+kafka:\
+org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration
 
 ##kafka binder参数(KafkaBinderConfigurationProperties.java)
 * spring.cloud.stream.kafka.binder.brokers:kafka　brokders参数，多个以逗号分隔
