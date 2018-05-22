@@ -12,8 +12,5 @@
 * [Spring相关](springxiang-guan.md)
   * [jasypt-spring-boot1.9版本的一个bug与新版本的变化](spring/jasypt-spring-boot1.9的bug.md)
 * [Spring Cloud相关](springcloud.md)
-  * [spring cloud stream] ()
-    *[绑定Kafka相关参数] (kafkaparams.md)
-    
-  
+  * [与Kafka相关参数](springcloud/spring-cloud-stream.md)
 
