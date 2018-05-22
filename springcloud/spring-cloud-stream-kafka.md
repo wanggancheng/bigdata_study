@@ -26,7 +26,13 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 
 ##Kafka producer参数
 
-##Kafka consumer参数
+##consumer参数
 * spring.cloud.stream.bindings.<bindingName>.consumer.autoCommitOffset:是否自动提交Offset
 * spring.cloud.stream.bindings.<bindingName>.consumer.concurrency:并发数
 * spring.cloud.stream.bindings.<bindingName>.consumer.partitioned:是否分区
+##Kafka 扩展consumer参数
+* spring.cloud.stream.bindings..<bindingName>.consumer.resetOffsets:是否重置offset
+* spring.cloud.stream.bindings..<bindingName>.consumer.startOffset:earliest
+* spring.cloud.stream.bindings..<bindingName>.consumer.enableDlq:
+* spring.cloud.stream.bindings..<bindingName>.consumer.recoveryInterval:恢复间隔
+
