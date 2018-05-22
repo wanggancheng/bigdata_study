@@ -13,8 +13,12 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 
 
 ##bindings通用参数
-* spring.cloud.stream.bindings.<bindingName>.destination:目标
-* sprinig.cloud.stream.bindings.<bindingName>.group:分组名
+* spring.cloud.stream.bindings.<channelName>.destination:目标
+* sprinig.cloud.stream.bindings.<channelName>.group:分组名
+
+##Kafka extend binding参数(KafkaExtendedBindingProperties.java)
+配置的前缀：spring.cloud.stream.kafka
+
 
 
 ##kafka binder参数(KafkaBinderConfigurationProperties.java)
@@ -34,26 +38,26 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 
 
 ## producer参数
-* spring.cloud.stream.bindings.<bindingName>.producer.partitionCount:
-* spring.cloud.stream.bindings.<bindingName>.producer.headerMode:
-* spring.cloud.stream.bindings.<bindingName>.producer.partitionKeyExtractorClass
-* spring.cloud.stream.bindings.<bindingName>.producer.partitionSelectorClass
+* spring.cloud.stream.bindings.<channelName>.producer.partitionCount:
+* spring.cloud.stream.bindings.<channelName>.producer.headerMode:
+* spring.cloud.stream.bindings.<channelName>.producer.partitionKeyExtractorClass
+* spring.cloud.stream.bindings.<channelName>.producer.partitionSelectorClass
 
 ## kafka producer参数
-* spring.cloud.stream.bindings.<bindingName>.producer.bufferSize:
-* spring.cloud.stream.bindings.<bindingName>.producer.maxRequestSize:
-* spring.cloud.stream.bindings.<bindingName>.producer.sync:
-* spring.cloud.stream.bindings.<bindingName>.producer.batchTimeout:
+* spring.cloud.stream.bindings.<channelName>.producer.bufferSize:
+* spring.cloud.stream.bindings.<channelName>.producer.maxRequestSize:
+* spring.cloud.stream.bindings.<channelName>.producer.sync:
+* spring.cloud.stream.bindings.<channelName>.producer.batchTimeout:
 
 
 
 ##consumer参数
-* spring.cloud.stream.bindings.<bindingName>.consumer.autoCommitOffset:是否自动提交Offset
-* spring.cloud.stream.bindings.<bindingName>.consumer.concurrency:并发数
-* spring.cloud.stream.bindings.<bindingName>.consumer.partitioned:是否分区
+* spring.cloud.stream.bindings.<channelName>.consumer.autoCommitOffset:是否自动提交Offset
+* spring.cloud.stream.bindings.<channelName>.consumer.concurrency:并发数
+* spring.cloud.stream.bindings.<channelName>.consumer.partitioned:是否分区
 ##Kafka 扩展consumer参数
-* spring.cloud.stream.bindings..<bindingName>.consumer.resetOffsets:是否重置offset
-* spring.cloud.stream.bindings..<bindingName>.consumer.startOffset:earliest
-* spring.cloud.stream.bindings..<bindingName>.consumer.enableDlq:
-* spring.cloud.stream.bindings..<bindingName>.consumer.recoveryInterval:恢复间隔
+* spring.cloud.stream.bindings.<channelName>.consumer.resetOffsets:是否重置offset
+* spring.cloud.stream.bindings.<channelName>.consumer.startOffset:earliest
+* spring.cloud.stream.bindings.<channelName>.consumer.enableDlq:
+* spring.cloud.stream.bindings.<channelName>.consumer.recoveryInterval:恢复间隔
 
