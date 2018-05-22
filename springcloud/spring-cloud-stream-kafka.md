@@ -15,6 +15,7 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 ##bindings通用参数
 * spring.cloud.stream.bindings.<channelName>.destination:目标
 * sprinig.cloud.stream.bindings.<channelName>.group:分组名
+配置类为：BindingServiceProperties.java
 
 ##Kafka extend binding参数(KafkaExtendedBindingProperties.java)
 配置的前缀：spring.cloud.stream.kafka
@@ -49,7 +50,7 @@ org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration
 * spring.cloud.stream.kafka.bindings.<channelName>.producer.maxRequestSize:
 * spring.cloud.stream.kafka.bindings.<channelName>.producer.sync:
 * spring.cloud.stream.kafka.bindings.<channelName>.producer.batchTimeout:
-
+ 配置类为：KafkaExtendedBindingProperties.java
 
 
 ##consumer参数
