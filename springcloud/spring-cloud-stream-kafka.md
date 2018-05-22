@@ -44,10 +44,10 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 * spring.cloud.stream.bindings.<channelName>.producer.partitionSelectorClass
 
 ## kafka producer参数
-* spring.cloud.stream.bindings.<channelName>.producer.bufferSize:
-* spring.cloud.stream.bindings.<channelName>.producer.maxRequestSize:
-* spring.cloud.stream.bindings.<channelName>.producer.sync:
-* spring.cloud.stream.bindings.<channelName>.producer.batchTimeout:
+* spring.cloud.stream.kafka.bindings.<channelName>.producer.bufferSize:
+* spring.cloud.stream.kafka.bindings.<channelName>.producer.maxRequestSize:
+* spring.cloud.stream.kafka.bindings.<channelName>.producer.sync:
+* spring.cloud.stream.kafka.bindings.<channelName>.producer.batchTimeout:
 
 
 
@@ -56,8 +56,8 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 * spring.cloud.stream.bindings.<channelName>.consumer.concurrency:并发数
 * spring.cloud.stream.bindings.<channelName>.consumer.partitioned:是否分区
 ##Kafka 扩展consumer参数
-* spring.cloud.stream.bindings.<channelName>.consumer.resetOffsets:是否重置offset
-* spring.cloud.stream.bindings.<channelName>.consumer.startOffset:earliest
-* spring.cloud.stream.bindings.<channelName>.consumer.enableDlq:
-* spring.cloud.stream.bindings.<channelName>.consumer.recoveryInterval:恢复间隔
+* spring.cloud.stream.kafka.bindings.<channelName>.consumer.resetOffsets:是否重置offset
+* spring.cloud.stream.kafka.bindings.<channelName>.consumer.startOffset:earliest
+* spring.cloud.stream.kafka.bindings.<channelName>.consumer.enableDlq:
+* spring.cloud.stream.kafka.bindings.<channelName>.consumer.recoveryInterval:恢复间隔
 
