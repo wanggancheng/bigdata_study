@@ -12,9 +12,7 @@
 * [Spring相关](springxiang-guan.md)
   * [jasypt-spring-boot1.9版本的一个bug与新版本的变化](spring/jasypt-spring-boot1.9的bug.md)
 * [Spring Cloud相关](springcloud.md)
-  * [String cloud Stream与Kafka相关参数](springcloud/spring-cloud-stream-kafka.md)
-* [Hadoop2X相关](hadoop/README.md)
-  * [Hadoop2X集群安装](hadoop/hadoop2xinstall.md)
-    * [chapter1.1.1](hadoop/hadoop2xinstall.md)
+  * [Spring Clound Stream](springcloud/spring-cloud-summary.md)
+    * [String cloud Stream与Kafka相关参数](springcloud/spring-cloud-stream-kafka.md)
     
 
