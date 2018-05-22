@@ -17,11 +17,15 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 * sprinig.cloud.stream.bindings.<channelName>.group:分组名
 配置类为：BindingServiceProperties.java
 
-##Kafka extend binding参数(KafkaExtendedBindingProperties.java)
-配置的前缀：spring.cloud.stream.kafka
+启用Kafka configuration properties的配置类信息：
 Kafka相关Configuration类在：META-INF/spring.binders中指定
 kafka:\
 org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration
+
+
+##Kafka extend binding参数(KafkaExtendedBindingProperties.java)
+配置的前缀：spring.cloud.stream.kafka
+
 
 ##kafka binder参数(KafkaBinderConfigurationProperties.java)
 * spring.cloud.stream.kafka.binder.brokers:kafka　brokders参数，多个以逗号分隔
