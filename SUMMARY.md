@@ -13,7 +13,7 @@
   * [jasypt-spring-boot1.9版本的一个bug与新版本的变化](spring/jasypt-spring-boot1.9的bug.md)
 * [Spring Cloud相关](springcloud.md)
   * [String cloud Stream与Kafka相关参数](springcloud/spring-cloud-stream-kafka.md)
-* [chapter1]
+* [Intellij1]
   * [chapeter1.1]
     * [chapter1.1.1]
     
