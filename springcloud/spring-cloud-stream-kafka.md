@@ -17,12 +17,21 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 * sprinig.cloud.stream.bindings.<bindingName>.group:分组名
 
 
-##kafka binder参数
+##kafka binder参数(KafkaBinderConfigurationProperties.java)
 * spring.cloud.stream.kafka.binder.brokers:kafka　brokders参数，多个以逗号分隔
 * spring.cloud.stream.kafka.binder.zk-nodes:zookeeper地址信息，多个以逗号分隔
 * spring.cloud.stream.kafka.binder.autoAddPartitions:是否自动添加分区数
 * spring.cloud.stream.kafka.binder.autoCreateTopics:是否自动创建Topic
-* spring.cloud.stream.kafka.binder.minPartitionCount:最少分区数
+* spring.cloud.stream.kafka.binder.offsetUpdateTimeWindow:
+* spring.cloud.stream.kafka.binder.offsetUpdateCount:
+* spring.cloud.stream.kafka.binder.maxWait:
+* spring.cloud.stream.kafka.binder.socketBufferSize:
+* spring.cloud.stream.kafka.binder.zkSessionTimeout:
+* spring.cloud.stream.kafka.binder.zkConnectionTimeout:
+* spring.cloud.stream.kafka.binder.requiredAcks:
+* spring.cloud.stream.kafka.binder.fetchSize:
+* spring.cloud.stream.kafka.binder.queueSize:
+
 
 ## producer参数
 * spring.cloud.stream.bindings.<bindingName>.producer.partitionCount:
