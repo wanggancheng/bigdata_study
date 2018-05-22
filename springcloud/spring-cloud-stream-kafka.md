@@ -24,7 +24,19 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 * spring.cloud.stream.kafka.binder.autoCreateTopics:是否自动创建Topic
 * spring.cloud.stream.kafka.binder.minPartitionCount:最少分区数
 
-##Kafka producer参数
+## producer参数
+* spring.cloud.stream.bindings.<bindingName>.producer.partitionCount:
+* spring.cloud.stream.bindings.<bindingName>.producer.headerMode:
+* spring.cloud.stream.bindings.<bindingName>.producer.partitionKeyExtractorClass
+* spring.cloud.stream.bindings.<bindingName>.producer.partitionSelectorClass
+
+## kafka producer参数
+* spring.cloud.stream.bindings.<bindingName>.producer.bufferSize:
+* spring.cloud.stream.bindings.<bindingName>.producer.maxRequestSize:
+* spring.cloud.stream.bindings.<bindingName>.producer.sync:
+* spring.cloud.stream.bindings.<bindingName>.producer.batchTimeout:
+
+
 
 ##consumer参数
 * spring.cloud.stream.bindings.<bindingName>.consumer.autoCommitOffset:是否自动提交Offset
