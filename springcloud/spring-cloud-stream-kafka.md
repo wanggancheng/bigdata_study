@@ -13,6 +13,7 @@ Topic在逻辑上可以被认为是一个queue。每条消费都必须指定它�
 
 
 启用configuration properties的配置类为：org.springframework.cloud.stream.config.BindingServiceConfiguration.java
+
 ##bindings通用参数
 * spring.cloud.stream.bindings.<channelName>.destination:目标
 * sprinig.cloud.stream.bindings.<channelName>.group:分组名
