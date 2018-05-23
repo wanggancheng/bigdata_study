@@ -1,3 +1,5 @@
+内容转自:https://blog.csdn.net/xiao_jun_0820/article/details/80166131
+
 首先，kafka的topic是由多个partitions物理分隔的。假设topic: testIn,有8个partitions
 
 其次，我们编写的springcloud kafka stream程序，打成jar包后，可以部署多个不同的实例instances，假设部署了3个instance。
