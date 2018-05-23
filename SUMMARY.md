@@ -14,5 +14,5 @@
 * [Spring Cloud相关](springcloud.md)
   * [Spring Clound Stream](springcloud/spring-cloud-summary.md)
     * [String cloud Stream与Kafka相关参数](springcloud/spring-cloud-stream-kafka.md)
-* [从源码中理解spring cloud kafka stream 是如何分配kafka的partitions给不同的instance的](cong-yuan-ma-zhong-li-jie-spring-cloud-kafka-stream-shi-ru-he-fen-pei-kafka-de-partitions-gei-bu-tong-de-instance-de.md)
+    * [从源码中理解spring cloud kafka stream 是如何分配kafka的partitions给不同的instance的](springcloud/cong-yuan-ma-zhong-li-jie-spring-cloud-kafka-stream-shi-ru-he-fen-pei-kafka-de-partitions-gei-bu-tong-de-instance-de.md)
 
