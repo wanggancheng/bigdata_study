@@ -369,6 +369,7 @@ cd ${HADOOP_HOME} && bin/hdfs namenode -format
 
 ```shell
 #只在node1上执行
+cd ${HADOOP_HOME} && bin/hdfs namenode -format
 cd ${HADOOP_HOME} && bin/hdfs zkfc -formatZK
 ```
 
