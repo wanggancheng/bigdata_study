@@ -17,6 +17,9 @@
     * [从源码中理解spring cloud kafka stream 是如何分配kafka的partitions给不同的instance的](springcloud/cong-yuan-ma-zhong-li-jie-spring-cloud-kafka-stream-shi-ru-he-fen-pei-kafka-de-partitions-gei-bu-tong-de-instance-de.md)
 
     * [StringCloudStreamBindKafkaMessageListener一些信息](springcloud/stringcloudstreambindkafkamessagelisteneryi-xie-xin-xi.md)
+* [Spark2.x相关](spark/README.md)
+  * [spark基本命令](spark/basiccommand.md)
+  
 
 
 
