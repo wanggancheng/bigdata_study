@@ -2,7 +2,7 @@
 ## 启动命令
 
 
-```
+```shell
 cd ${SPARK_HOME} && ./sbin/start-all.sh
 ```
 
