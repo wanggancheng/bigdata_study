@@ -33,5 +33,31 @@ Caused by: java.nio.channels.ClosedChannelException
 17/01/31 00:12:26 INFO cluster.YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> node01, PROXY_URI_BASES -> http://node01:8088/proxy/application_1485792095366_0003), /proxy/application_1485792095366_0003
 17/01/31 00:12:26 INFO ui.JettyUtils: Adding filter: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
 17/01/31 00:12:28 ERROR cluster.YarnClientSchedulerBackend: Yarn application has already exited with state FINISHED!
-```
 
+
+```
+**解决方法**
+
+修改yarn-site.xml，添加下列property
+
+<property>
+    <name>yarn.nodemanager.pmem-check-enabled</name>
+    <value>false</value>
+</property>
+
+<property>
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+</property>
+
+分析：
+
+按照上述配置提供的信息，目测是我给节点分配的内存太小，yarn直接kill掉了进程，导致ClosedChannelException
+
+ 
+
+文献参考：http://stackoverflow.com/questions/38988941/running-yarn-with-spark-not-working-with-java-8
+
+ 
+
+实测：不修改yarn-site.xml，换成Java 7可正常执行。
