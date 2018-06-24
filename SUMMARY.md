@@ -18,4 +18,5 @@
     * [StringCloudStreamBindKafkaMessageListener一些信息](springcloud/stringcloudstreambindkafkamessagelisteneryi-xie-xin-xi.md)
 * [Spark2.x相关](spark/README.md)
   * [spark基本命令](spark/basiccommand.md)
+  * [spark使用问题分析](spark/sparkshi-yong-wen-ti-fen-xi.md)
 
