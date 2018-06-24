@@ -40,15 +40,20 @@ Caused by: java.nio.channels.ClosedChannelException
 
 修改yarn-site.xml，添加下列property
 
+
+```java
 <property>
-    <name>yarn.nodemanager.pmem-check-enabled</name>
-    <value>false</value>
+<name>yarn.nodemanager.pmem-check-enabled</name>
+<value>false</value>
 </property>
 
 <property>
-    <name>yarn.nodemanager.vmem-check-enabled</name>
-    <value>false</value>
+<name>yarn.nodemanager.vmem-check-enabled</name>
+<value>false</value>
 </property>
+```
+
+
 
 分析：
 
